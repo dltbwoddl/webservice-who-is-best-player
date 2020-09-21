@@ -4,3 +4,8 @@
 4.nodejs : 서버만들기(firebase hosting)
 5.sql : 데이터 베이스(firebase database)
 6.firebase : 프로토타입을 만들 때 좋은 서비스
+
+
+frontend:vue js
+backend:node js
+database:sql or firebase DB
