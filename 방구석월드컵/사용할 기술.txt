@@ -1,0 +1,11 @@
+1.ajax : 웹페이지를 부분적으로 바꾸어주는 기술 쓸데 없는 데이터 이동을 방지하기 위해
+2.bootstarp : 기본적인 디자인 사용하기 위해
+3.jquery : js를 보다 쉽게 구현하기 위해
+4.nodejs : 서버만들기(firebase hosting)
+5.sql : 데이터 베이스(firebase database)
+6.firebase : 프로토타입을 만들 때 좋은 서비스
+
+
+frontend:vue js
+backend:node js
+database:sql or firebase DB
