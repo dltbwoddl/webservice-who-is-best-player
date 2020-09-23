@@ -12,7 +12,18 @@
 <body>
     <div id="app">
         {{nextyear('안녕하세요 ')}}
+        <input :type="type" :value="inputData">
+        <a :href="getKossieCoderLink('watch?v=MQQGlUM0uKM&feature=emb_title')">코지코더채널</a>
+        <br>
+        {{year}}
+        <button v-on:click="PlusYear()">PlusYear</button>
+        <button v-on:click="MinusYear()">MinusYear</button>
+        <form v-on:submit.prevent="submit">
+            <input type="text">
+            <button type="submit">submit</button>
+        </form>
     </div>
+    
     <script>
         new Vue({
             el: "#app",
@@ -20,13 +31,30 @@
                 person: {
                     name: 'dltbwoddl'
                     , age: 34
-                }
+                },
+                inputData: 'hello',
+                type: 'text',
+                link: 'https://www.youtube.com/',
+                year:2018
             },
             methods: {
-                nextyear(greeting){
-                    return greeting +this.person.name+"는 내년에 "+(this.person.age+1)+" 살입니다."
+                submit(){
+                    alert('submitted')
+                    console.log("hello")
                 },
-                othermethod : function(){
+                PlusYear() {
+                    return this.year+=1
+                },
+                MinusYear() {
+                    return this.year --
+                },
+                getKossieCoderLink(channel) {
+                    return this.link + channel;
+                },
+                nextyear(greeting) {
+                    return greeting + this.person.name + "는 내년에 " + (this.person.age + 1) + " 살입니다."
+                },
+                othermethod: function () {
                     this.nextyear()
                 }
             }
