@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .red{
+            color: red;
+        }
 
+        .bold{
+            font-weight: bold;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -19,15 +28,47 @@
         <button v-on:click="PlusYear()">PlusYear</button>
         <button v-on:click="MinusYear()">MinusYear</button>
         <form v-on:submit.prevent="submit">
-            <input type="text">
+            <!-- <input type="text" :value="text" @keyup="updateText">
+            {{text}}<br> -->
+            <input type="text" v-model="text">
+            {{text}}<br>
             <button type="submit">submit</button>
         </form>
+        {{number+1}}
+        {{reversedMessage_c}}
+        {{reversedMessage_c}}
+        {{reversedMessage_c}}
+        <button @click="changeMessage">click</button>
+        {{message}}
+        {{updated}}<br>
+        <div :class="{red :isRed, bold:isBold}">Hello</div>
+        <button @click="update">Click</button>
+        <div :class="classObject">Hello_2</div>
+        <button @click="update_2">Click</button>
+        <div :style='{color:red,fontSize:size}'>하이</div>
+        <div :style='styleObject'>하이2</div>
+
     </div>
-    
     <script>
         new Vue({
             el: "#app",
             data: {
+                classObject:{
+                    red:false,
+                    bold:false
+                },
+                styleObject:{
+                    color : "red",
+                    fontSize:'30px'
+                },
+                red : "red",
+                size : "30px",
+                isBold:false,
+                isRed:false,
+                message:"안녕하세요",
+                updated : "아니요",
+                number :1,
+                text: "text1",
                 person: {
                     name: 'dltbwoddl'
                     , age: 34
@@ -35,18 +76,26 @@
                 inputData: 'hello',
                 type: 'text',
                 link: 'https://www.youtube.com/',
-                year:2018
+                year: 2018
             },
-            methods: {
-                submit(){
+            methods : {
+                // updateText(event){
+                //     return this.text=event.target.value
+                // },
+                //양방향 바인딩으로 구현하기.
+                update(){
+                    this.isRed=!this.isRed
+                    this.isBold=!this.isBold
+                },
+                submit() {
                     alert('submitted')
                     console.log("hello")
                 },
                 PlusYear() {
-                    return this.year+=1
+                    return this.year += 1
                 },
                 MinusYear() {
-                    return this.year --
+                    return this.year--
                 },
                 getKossieCoderLink(channel) {
                     return this.link + channel;
@@ -56,6 +105,38 @@
                 },
                 othermethod: function () {
                     this.nextyear()
+                },
+                reversedMessage_m(){
+                    return this.message.split('').reverse().join('')
+                },
+                changeMessage(){
+                    return this.message = '코지코더'
+                },
+                update_2(){
+                    this.classObject.red=!this.classObject.red
+                    this.classObject.bold=!this.classObject.bold
+                }
+            },
+            //함수와 컴퓨티드의 차이
+            //후자는 캐싱을 하고 전자는 하지 않는다.
+            //프로그램이 시작할 때 이미 컴퓨티드는 계산되어 있다.
+            //함수는 사용하려고 할 때 계산해서 사용한다.
+            //즉 반복적인 작업을 할 때 컴퓨티드는 바로 값을 가져올 수 있고
+            //함수는 계산 후에 값을 가져올 수 있다.
+            //만약 값이 바뀐다면 컴퓨티드는 즉시 반영해준다.
+            computed:{
+                reversedMessage_c(){
+                    return this.message.split('').reverse().join('')
+                }
+            },
+            //와치 속성
+            //감시하는 속성 웬만하면 컴퓨티드로 해야 하지만 예외적으로 와치를 사용해야 할 때가 있다.
+            watch:{
+                //message가 변하면 실행된다.
+                message(newval, oldval){
+                    console.log(newval)//코지코더
+                    console.log(oldval)//안녕하세요
+                    this.updated="네"
                 }
             }
         }
