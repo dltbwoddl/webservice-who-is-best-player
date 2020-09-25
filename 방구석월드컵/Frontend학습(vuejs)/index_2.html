@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .red{
+            color: red;
+        }
+
+        .bold{
+            font-weight: bold;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-if와 v-show
+        전자는 토글 비용이 높다.
+        후자는 초기 렌더링 비용이 높다.
+        런타임 시 조건이 바뀌지 않는다면 v-if를,
+        매우 자주 바꾸길 원한다면 v-show를 권장한다.
+     -->
+    <div id="app">
+        <template v-if="number===1">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+        <div v-else-if="number===2">Hi</div>
+        <div v-else>No</div>
+        <button @click='toggleshow'>toggle</button>
+        <button @click='numberincrease'>numberincrese</button>{{number}}
+        <br>
+        <div v-show="show">Yes</div>
+        <br>
+        <button @click="toggle">toggle</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data : {
+                number:1,
+                show:false
+            },
+            methods:{
+                numberincrease(){
+                    this.number++;
+                },
+                toggleshow(){
+                    this.show = !this.show;
+                },
+                toggle(){
+                    this.show = !this.show;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
