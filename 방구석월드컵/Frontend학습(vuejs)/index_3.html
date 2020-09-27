@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="demo">
+        <div>
+            {{people[0].name}} {{people[0].age}}
+        </div>
+        <div>
+            {{people[1].name}} {{people[1].age}}
+        </div>
+        <div>
+            {{people[2].name}} {{people[2].age}}
+        </div>
+        <div>
+            {{people[3].name}} {{people[3].age}}
+        </div>
+        <div>
+            {{people[4].name}} {{people[4].age}}
+        </div>
+
+
+        <div v-for="(person,index) in people" :key="person.name+'-'+person.age">
+            {{person.name}} {{person.age}} {{index}}
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#demo',
+            data: {
+                people: [
+                    { name: 'a', age: 20 },
+                    { name: 'b', age: 21 },
+                    { name: 'c', age: 22 },
+                    { name: 'd', age: 23 },
+                    { name: 'e', age: 24 },
+                    { name: 'f', age: 25 }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
