@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <balmobutton></balmobutton>
+    </div>
+    <hr>
+    <hr>
+    <div id="app-1">
+
+        <balmobutton></balmobutton>
+    </div>
+    <script>
+        const helloworld = {
+            template:`
+            <div>
+                hello_world
+            </div>
+            `
+        }
+        const balmobutton = {
+            components:{
+                "helloworld":helloworld
+            }
+            ,
+            template: `
+            <div>
+                {{name}}<br>
+                <helloworld></helloworld>
+                <button @click="changetext">변환</button>
+            </div>
+            `,
+            data() {
+                return {
+                    name: "발모스토리"
+                }
+            },
+            methods: {
+                changetext() {
+                    this.name = "발모스토리 update";
+                }
+            }
+        }
+        const app = new Vue({
+            el: "#app",
+            components: {
+                'balmobutton': balmobutton
+            }
+        }
+        )
+        const app_1 = new Vue({
+            el: "#app-1"
+        }
+        )
+
+
+    </script>
+</body>
+
+</html>
