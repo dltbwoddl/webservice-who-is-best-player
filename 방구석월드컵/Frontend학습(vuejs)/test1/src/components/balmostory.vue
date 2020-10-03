@@ -1,9 +1,10 @@
 
 <template>
     <div>
-        <h1>{{title}}</h1>
-        <p>{{name}}</p>
-        <button @click="updateName">clickme</button>
+        <p>one</p>
+        <slot name="first" :homes="home"></slot>
+        <p>two</p>
+        <slot></slot>
     </div>
 </template>
 
@@ -18,12 +19,9 @@ export default{
         }
     },
     data(){
-        return {name:"balmostory"}
-    },
-        methods:{
-        updateName(){
-            this.name = "balmostory updated"
-        }
+        return {
+            home:"balmostory"
+            }
     }
 }
 </script>

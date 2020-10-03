@@ -1,8 +1,15 @@
 <template>
   <div>
     <h1>this is Home page</h1>
-    <p>{{name}}</p>
-    <balmostory title="Home"/>
+    <p>{{names}}</p>
+    <balmostory>
+     <template v-slot:first="Home" >
+        <p>hello {{Home.homes}}</p>
+     </template>
+     <template v-slot:default>
+       <p>hi</p>
+     </template>
+    </balmostory>
   </div>
 </template>
 
@@ -16,7 +23,7 @@ export default{
   },
   data(){
    return{
-     name:"balmostory"
+     names:"balmostory"
     }
   }
 }
@@ -24,8 +31,6 @@ export default{
 
 
 <style scoped>
-/* scoped를 넣어야 템플릿내의 h1에만 스타일이 적용된다. 
-때문에 보통의 경우에 다 넣어준다.*/
 h1{
   color: red;
   font-size: 20px;
