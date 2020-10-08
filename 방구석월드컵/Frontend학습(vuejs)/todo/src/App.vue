@@ -1,7 +1,7 @@
 
 <template>
   <div id="app" class="container">
-    
+    <complete/>
     <h1 class="text-center">Todo App</h1>
     
     <addtodo 
@@ -10,7 +10,6 @@
     <hr>
 
     <Todolist 
-    :todos="todos"
     @checkbox-toggle="checkboxtoggle"
     @click-delete="clickdelete"/>
   
@@ -23,10 +22,12 @@
 //문제2 : 다음중 어느 코드를 바꿔야 한 번에 모든 데이터가 사라지지 않을까?
 import Todolist from "@/components/todolist.vue"
 import addtodo from "@/components/addtodo.vue"
+import complete from "@/components/complete.vue"
 export default {
 components:{
   Todolist,
-  addtodo
+  addtodo,
+  complete
 },
 data(){
   return{
