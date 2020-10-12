@@ -22,12 +22,12 @@ export default {
         }
     },
     methods:{
-        checkboxtoggle(value){
-            this.$emit('checkbox-toggle',value)
-        },
-        clickdelete(todoid){
-           this.$emit('click-delete',todoid) 
-        }
+        // checkboxtoggle(value){
+        //     this.$emit('checkbox-toggle',value)
+        // },
+        // clickdelete(todoid){
+        //    this.$emit('click-delete',todoid) 
+        // }
     }
 }
 </script>

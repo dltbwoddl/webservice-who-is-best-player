@@ -19,8 +19,8 @@ export default {
 },
 methods:{
   plustodo_2(e){
-          this.emptytext="";
-          this.$emit("ptodo",e)
+      this.$store.commit('ADD_TODO',e.target.value)
+      this.emptytext=""
         }
     }
 }
