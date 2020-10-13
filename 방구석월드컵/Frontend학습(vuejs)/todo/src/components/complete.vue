@@ -7,7 +7,7 @@
 export default {
     computed:{
         numberofcompletedtodo(){
-            return this.$store.state.todos.filter(todo=>todo.checked).length;
+            return this.$store.getters.numberofcompletedtodo;
         }
     }    
 }

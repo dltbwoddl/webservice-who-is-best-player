@@ -8,7 +8,7 @@
     <hr>
 
     <Todolist/>
-  
+    <userlist/>
   </div>
 </template>
 
@@ -16,21 +16,25 @@
 import Todolist from "@/components/todolist.vue"
 import addtodo from "@/components/addtodo.vue"
 import complete from "@/components/complete.vue"
+import userlist from  "@/components/userlist.vue"
 export default {
 components:{
   Todolist,
   addtodo,
-  complete
-},
-data(){
-  return{
-    todos:[
-      {id:1, text:"buy a car", checked:false}
-    , {id:2, text:"play game", checked:false}
-    ]
-  }
-},
-methods:{
+  complete,
+  userlist
+}
+// },
+// data(){
+//   return{
+//     todos:[
+//       {id:1, text:"buy a car", checked:false}
+//     , {id:2, text:"play game", checked:false}
+//     ]
+//   }
+// },
+
+// methods:{
   // plustodo(e){
   //   console.log(e.target.value)
   //   this.todos.push({
@@ -56,6 +60,6 @@ methods:{
     //   // this.todos.splice(index,1);
     //   this.todos=this.todos.filter(todo=>todo.id!==id)
     // }
-  }
+  // }
 }
 </script>

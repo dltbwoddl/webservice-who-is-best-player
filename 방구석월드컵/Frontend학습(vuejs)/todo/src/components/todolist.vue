@@ -4,8 +4,6 @@
             v-for="todo in todos" 
             :key="todo.id" 
             :todo="todo" 
-            @checkbox-toggle="checkboxtoggle"
-            @click-delete="clickdelete"
     />
     </div>
 </template>
