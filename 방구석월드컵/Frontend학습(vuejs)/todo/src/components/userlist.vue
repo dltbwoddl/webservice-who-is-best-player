@@ -1,7 +1,7 @@
 <template>
     <div>
         Userlist
-        <div v-for="user in people" :key="user.id">
+        <div v-for="user in users" :key="user.id">
             {{user.name}}
         </div>
     </div>
@@ -17,7 +17,7 @@ export default {
     //     }
     // },
     computed:{
-        ...mapState({people : 'users'})
+        ...mapState('user',['users'])
         // users(){
         //      return this.$store.state.users;
         // },
@@ -29,7 +29,7 @@ export default {
         this.getUsers();
     },
     methods:{
-        ...mapActions(['getUsers'])
+        ...mapActions('user',['getUsers'])
         // getUsers(){
         //     this.$store.dispatch('getUsers')
         //     // axios.get('https://jsonplaceholder.typicode.com/users').then((res)=>{

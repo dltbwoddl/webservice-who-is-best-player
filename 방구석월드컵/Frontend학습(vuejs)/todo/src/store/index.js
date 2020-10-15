@@ -1,69 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import axios from 'axios'
-
+import todo from "./modules/todo"
+import user from "./modules/user"
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state:{
-        todos:[
-            {id:1, text:"buy a car", checked:false}
-          , {id:2, text:"play game", checked:false}
-          ],
-          users:[]
-    },
-    mutations:{
-        GETUSERS(state,value){
-            state.users=value.data
-        },
-        ADD_TODO(state,value){
-            state.todos.push({
-            id:Math.random(),
-            text:value,
-            checked:false
-        })
-        state.emptytext="";
-        },
-        TOGGLE_TODO(state,{id,checked}){
-            const index=state.todos.findIndex(todo=>{
-                return todo.id==id;
-              });
-              state.todos[index].checked=checked
-        },
-        DELETE_TODO(state,todoid){
-            const index=state.todos.findIndex(todo=>{
-                return todo.id==todoid;
-                });
-            state.todos.splice(index,1);
-        }
-    },
-    //비동기적 작업을 수행할 때 actions를 사용함.
-    //주로 데이터 베이스를 활용할 때
-    actions:{
-        getUsers({commit}){
-            axios.get('https://jsonplaceholder.typicode.com/users').then((res)=>{
-                commit('GETUSERS',res)
-            })
-        },
-        addTodo({commit},value){
-            //비동기 작업->commit으로 데이터 바꾸기.
-            setTimeout(function(){
-                commit('ADD_TODO',value)
-            },500);
-        },
-        toggleTodo({commit},{id,checked}){
-            setTimeout(function(){
-                commit('TOGGLE_TODO',{id,checked})
-            },500);        },
-        deleteTodo({commit},todoid){
-            setTimeout(function(){
-                commit('DELETE_TODO',todoid)
-            },500);        },
-
-    },
-    getters:{
-        numberofcompletedtodo:state=>{
-            return state.todos.filter(todo=>todo.checked).length;
-        }
+    // vuex의 store가 비대해졌을 때 관련된 로직끼리 묶어서 파일로 만들어주는 것이 모듈이다.
+    modules:{
+        todo:todo,
+        user:user
     }
 })
